@@ -82,32 +82,25 @@ namespace EuroGUI
 
         private void btnFeladat4_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+           
                 AdatbazisMegnyitas();
                 {
                     var command = new MySqlCommand("SELECT COUNT(*) FROM dal WHERE orszag = 'Magyarország'", connection);
                     var eredmeny = command.ExecuteScalar();
                     var MOversenyzok = Convert.ToInt32(eredmeny);
 
-                    command = new MySqlCommand("SELECT MAX(helyezes) FROM dal WHERE orszag = 'Magyarország'", connection);
+                    command = new MySqlCommand("SELECT MIN(helyezes) FROM dal WHERE orszag = 'Magyarország'", connection);
                     eredmeny = command.ExecuteScalar();
                     var legjobbhelyezes = eredmeny == DBNull.Value ? 0 : Convert.ToInt32(eredmeny);
 
                     MessageBox.Show($"Magyarországi versenyzők száma: {MOversenyzok}\nLegjobb helyezés: {legjobbhelyezes}");
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hiba történt! \n" + ex.Message);
-            }
+            
         }
-
 
         private void btnFeladat5_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            
                 AdatbazisMegnyitas();
                 {
                     var command = new MySqlCommand("SELECT ROUND(AVG(pontszam), 2) FROM dal WHERE orszag = 'Németország'", connection);
@@ -116,45 +109,36 @@ namespace EuroGUI
 
                     MessageBox.Show($"Németország átlagos pontszáma: {atlag:F2}");
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hiba történt! \n" + ex.Message);
-            }
+           
         }
 
         private void btnFeladat6_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            
                 AdatbazisMegnyitas();
                 {
-                    var parancs = new MySqlCommand("SELECT CONCAT(eloado, ' - ', cim) FROM dal WHERE cim LIKE '%Luck%'", connection);
-                    var reader = parancs.ExecuteReader();
+                    var command = new MySqlCommand("SELECT CONCAT(eloado, ' - ', cim) FROM dal WHERE cim LIKE '%Luck%'", connection);
+                    var reader = command.ExecuteReader();
 
-                    var szerepelaluckszo = string.Empty;
+                    var vanLuck = string.Empty;
                     while (reader.Read())
                     {
-                        szerepelaluckszo += reader.GetString(0) + ", ";
+                        vanLuck += reader.GetString(0) + "\n5";
                     }
 
                     reader.Close();
 
-                    if (!string.IsNullOrEmpty(szerepelaluckszo))
+                    if (!string.IsNullOrEmpty(vanLuck))
                     {
-                        szerepelaluckszo = szerepelaluckszo.TrimEnd(',', ' ');
-                        MessageBox.Show(szerepelaluckszo);
+                        vanLuck = vanLuck.TrimEnd(',', ' ');
+                        MessageBox.Show(vanLuck);
                     }
                     else
                     {
-                        MessageBox.Show("Nincsenek olyan dalok, amelyekben szerepel a \"Luck\" szó.");
+                        MessageBox.Show("Nincs olyan dal amiben szerepel a \"Luck\" szó.");
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hiba történt! \n" + ex.Message);
-            }
+           
         }
 
         private void btnFeladat7_Click(object sender, RoutedEventArgs e)

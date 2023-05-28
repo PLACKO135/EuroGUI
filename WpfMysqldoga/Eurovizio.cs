@@ -24,10 +24,10 @@ namespace EuroGUI
             this.pontszam = pontszam;
         }
 
-        public int Ev { get => ev; set => ev = value; }
-        public string Eloado { get => eloado; set => eloado = value; }
-        public string Cim { get => cim; set => cim = value; }
-        public int Helyezes { get => helyezes; set => helyezes = value; }
-        public int Pontszam { get => pontszam; set => pontszam = value; }
+        public int Ev { get => ev;  }
+        public string Eloado { get => eloado;  }
+        public string Cim { get => cim; }
+        public int Helyezes { get => helyezes; }
+        public int Pontszam { get => pontszam; }
     }
 }

@@ -8,8 +8,8 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -19,14 +19,14 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button Content="4. feladat" x:Name="btnFeladat4" Margin="10" Click="btnFeladat4_Click"/>
-        <Button Content="5. feladat" x:Name="btnFeladat5" Margin="10" Grid.Column="1" Click="btnFeladat5_Click" />
-        <Button Content="6. feladat" x:Name="btnFeladat6" Margin="10" Grid.Column="2" Click="btnFeladat6_Click"/>
-        <Button Content="7. feladat" x:Name="btnFeladat7" Margin="10" Grid.Column="3" Click="btnFeladat7_Click"/>
-        <Button Content="8. feladat" x:Name="btnFeladat8" Margin="10" Grid.Column="4" Click="btnFeladat8_Click"/>
+        <Button Content="4. feladat" x:Name="btnFeladat4" Margin="10" Grid.Row="1" Click="btnFeladat4_Click"/>
+        <Button Content="5. feladat" x:Name="btnFeladat5" Margin="10" Grid.Row="1" Grid.Column="1" Click="btnFeladat5_Click" />
+        <Button Content="6. feladat" x:Name="btnFeladat6" Margin="10" Grid.Row="1" Grid.Column="2" Click="btnFeladat6_Click"/>
+        <Button Content="7. feladat" x:Name="btnFeladat7" Margin="10" Grid.Row="1" Grid.Column="3" Click="btnFeladat7_Click"/>
+        <Button Content="8. feladat" x:Name="btnFeladat8" Margin="10" Grid.Row="1" Grid.Column="4" Click="btnFeladat8_Click"/>
 
 
-        <DataGrid x:Name="dataGrid" Grid.Row="1" Grid.ColumnSpan="5" AutoGenerateColumns="False">
+        <DataGrid x:Name="dataGrid"  Grid.ColumnSpan="5" AutoGenerateColumns="False" SelectionUnit="FullRow" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Év" Binding="{Binding Ev}"/>
                 <DataGridTextColumn Header="Előadó" Binding="{Binding Eloado}"/>
