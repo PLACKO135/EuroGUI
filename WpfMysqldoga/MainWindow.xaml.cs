@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Utilities;
 
 namespace EuroGUI
 {
@@ -123,7 +124,7 @@ namespace EuroGUI
                     var vanLuck = string.Empty;
                     while (reader.Read())
                     {
-                        vanLuck += reader.GetString(0) + "\n5";
+                        vanLuck += reader.GetString(0) + "\n";
                     }
 
                     reader.Close();
@@ -135,7 +136,7 @@ namespace EuroGUI
                     }
                     else
                     {
-                        MessageBox.Show("Nincs olyan dal amiben szerepel a \"Luck\" szó.");
+                        MessageBox.Show("Nincs olyan dal aminek a címében szerepel a \"Luck\" szó.");
                     }
                 }
            
@@ -143,7 +144,14 @@ namespace EuroGUI
 
         private void btnFeladat7_Click(object sender, RoutedEventArgs e)
         {
-           
+            string searchText = keresnivalo.Text;
+
+            var filter = euro.Where(s => s.Eloado.Contains(searchText))
+                                     .OrderBy(s => s.Eloado)
+                                     .ThenBy(s => s.Cim);
+                        
+            kereseseredmeny.ItemsSource = filter;
+            kereseseredmeny.DisplayMemberPath = "cim";
         }
 
         private void btnFeladat8_Click(object sender, RoutedEventArgs e)

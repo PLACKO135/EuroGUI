@@ -9,7 +9,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -19,12 +19,14 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button Content="4. feladat" x:Name="btnFeladat4" Margin="10" Grid.Row="1" Click="btnFeladat4_Click"/>
-        <Button Content="5. feladat" x:Name="btnFeladat5" Margin="10" Grid.Row="1" Grid.Column="1" Click="btnFeladat5_Click" />
-        <Button Content="6. feladat" x:Name="btnFeladat6" Margin="10" Grid.Row="1" Grid.Column="2" Click="btnFeladat6_Click"/>
-        <Button Content="7. feladat" x:Name="btnFeladat7" Margin="10" Grid.Row="1" Grid.Column="3" Click="btnFeladat7_Click"/>
-        <Button Content="8. feladat" x:Name="btnFeladat8" Margin="10" Grid.Row="1" Grid.Column="4" Click="btnFeladat8_Click"/>
+        <Button Height="auto" Content="4. feladat" x:Name="btnFeladat4" Margin="10" Grid.Row="1" Click="btnFeladat4_Click"/>
+        <Button Height="auto" Content="5. feladat" x:Name="btnFeladat5" Margin="10" Grid.Row="1" Grid.Column="1" Click="btnFeladat5_Click" />
+        <Button Height="auto" Content="6. feladat" x:Name="btnFeladat6" Margin="10" Grid.Row="1" Grid.Column="2" Click="btnFeladat6_Click"/>
+        <Button Height="30" Content="7. feladat" x:Name="btnFeladat7" Grid.Row="1" Grid.Column="3" Click="btnFeladat7_Click" VerticalAlignment="Bottom"/>
+        <Button Height="auto" Content="8. feladat" x:Name="btnFeladat8" Margin="10" Grid.Row="1" Grid.Column="4" Click="btnFeladat8_Click"/>
 
+        <TextBox x:Name="keresnivalo" Height="30"  Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" BorderBrush="BlueViolet"/>
+        <ListBox x:Name="kereseseredmeny" Height="30"  Grid.Row="1" Grid.Column="3" VerticalAlignment="Top" BorderBrush="Red"/>
 
         <DataGrid x:Name="dataGrid"  Grid.ColumnSpan="5" AutoGenerateColumns="False" SelectionUnit="FullRow" SelectionMode="Single">
             <DataGrid.Columns>
